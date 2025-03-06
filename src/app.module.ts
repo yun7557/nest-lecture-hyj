@@ -16,6 +16,7 @@ import { BldgModule } from './bldg/bldg.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // 개발환경에서만 true 배포시 false
     }),
+    // BldgModule 추가
     BldgModule,
   ],
   controllers: [AppController],
