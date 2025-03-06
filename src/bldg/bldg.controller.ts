@@ -12,6 +12,7 @@ export class BldgController {
   async findAll(): Promise<Bldg[]> {
     return this.BldgService.findAll();
   }
+  
   @Get('nearby')
   async findNearby(@Query() query: BldgNearbyBldgDto): Promise<Bldg[]> {
     return this.BldgService.findNearby(query.x, query.y, query.radius); 

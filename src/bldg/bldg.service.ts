@@ -14,14 +14,15 @@ export class BldgService {
     }
     async findNearby(x: number, y: number, radius: number): Promise<Bldg[]> {
         return this.bldgRepository
-            .createQueryBuilder("bldg")
+            .createQueryBuilder('bldg')
             .where(
-                `ST_DISTANCE(
-                    ST_SetSRID(ST_MakePoint(x, y), 4326)::geography,
+                `ST_Distance(
+                    ST_SetSRID(ST_MakePoint(:x, :y), 4326)::geography,
                     bldg.bldg_geom::geography
-                    ) <= :radius` , 
-            { x, y, radius },
+                    ) <= :radius`,
+                { x, y, radius },
             )
             .getMany();
     }
+
 }
